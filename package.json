@@ -1,17 +1,21 @@
 {
-  "name": "www",
+  "name": "evblurbs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build",
+    "deploy": "NODE_ENV=production webpack -p"
   },
-  "author": "",
+  "author": "Evan Johnson",
   "license": "ISC",
   "dependencies": {
     "compression": "^1.5.1",
     "connect": "^3.4.0",
     "http": "0.0.0",
-    "serve-static": "^1.10.0"
+    "jsx-loader": "^0.13.2",
+    "react": "^0.13.3",
+    "serve-static": "^1.10.0",
+    "webpack": "^1.10.5"
   }
 }

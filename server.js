@@ -22,5 +22,5 @@ app.use(compression());
 //app.use(vhost('seafewd5.evblurbs.io', fewdapp));
 //app.use(vhost('www.evblurbs.io', mainapp));
 //app.use(vhost('evblurbs.io', mainapp));
-app.use(serverStatic('dist'));
+app.use(serverStatic(__dirname + '/dist'));
 http.createServer(app).listen(process.env.PORT || 80);

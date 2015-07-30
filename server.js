@@ -13,8 +13,8 @@ var compression = require('compression');
 //fewdapp.use(compression());
 
 // set static directories
-mainapp.use(serverStatic("dist"));
-fewdapp.use(serverStatic("fewdapp"));
+mainapp.use(serverStatic(__dirname + "/dist"));
+fewdapp.use(serverStatic(__dirname + "/fewdapp"));
 
 // app for all apps
 var app = connect();

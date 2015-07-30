@@ -1,0 +1,3 @@
+[submodule "sea-fewd"]
+	path = sea-fewd
+	url = https://github.com/evblurbs/sea-fewd.git

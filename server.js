@@ -1,5 +1,6 @@
 var connect = require('connect');
 var http = require('http');
+var https= require('https');
 var vhost = require('vhost');
 var serverStatic = require('serve-static');
 var compression = require('compression');
@@ -47,9 +48,21 @@ githubOAuth.on('error', function(err) {
 });
 
 githubOAuth.on('token', function(token, serverResponse) {
-  axios.get(githubUtils.returnAPI() + token.access_token)
-    .then(function(response) {
-      serverResponse.end(response.data);
+
+  var options = {
+    hostname: 'api.github.com',
+    path: '/user?access_token=046be40da20b63d5f784be834c55ed670f0b0208',
+    method: 'GET'
+  };
+
+  var req = https.request(options, function(res) {
+    res.on('end', function() {
+      serverResponse.end(JSON.parse(body));
     });
+  });
+  req.end();
+  req.on('error', function(e) {
+    console.error(e);
+  });
 });
 

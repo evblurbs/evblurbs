@@ -3,6 +3,7 @@ var http = require('http');
 var vhost = require('vhost');
 var serverStatic = require('serve-static');
 var compression = require('compression');
+var githubUtils = require('sea-fewd/app/utils/githubUtils');
 
 // app for evblurbs.io
 var mainapp = connect();
@@ -41,11 +42,11 @@ require('http').createServer(function(req, res) {
 }).listen(process.env.PORT || 80);
 
 githubOAuth.on('error', function(err) {
-  console.error('there was a login error', err)
+  console.error('there was a login error', err);
 });
 
 githubOAuth.on('token', function(token, serverResponse) {
-  console.log('here is your shiny new github oauth token', token)
-  serverResponse.end(JSON.stringify(token))
+  console.log('here is your shiny new github oauth token', token);
+  serverResponse.end(githubUtils.getUserInfo());
 });
 

@@ -4,6 +4,7 @@ var vhost = require('vhost');
 var serverStatic = require('serve-static');
 var compression = require('compression');
 var githubUtils = require('./sea-fewd/app/utils/githubUtils');
+var axios = require('axios');
 
 // app for evblurbs.io
 var mainapp = connect();
@@ -46,7 +47,9 @@ githubOAuth.on('error', function(err) {
 });
 
 githubOAuth.on('token', function(token, serverResponse) {
-  console.log('here is your shiny new github oauth token', token);
-  serverResponse.end(githubUtils.returnAPI() + 'ayo');
+  axios.get(githubUtils.returnAPI() + token.access_token)
+    .then(function(response) {
+      serverResponse.end(response.data);
+    });
 });
 

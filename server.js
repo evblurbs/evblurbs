@@ -21,9 +21,9 @@ app.use(vhost('www.evblurbs.io', mainapp));
 app.use(vhost('evblurbs.io', mainapp));
 
 var githubOAuth = require('github-oauth')({
-  githubClient: process.env['GITHUB_CLIENT'],
-  githubSecret: process.env['GITHUB_SECRET'],
-  baseURL: 'http://localhost',
+  githubClient: '23d58dfc41b20cb6f224',
+  githubSecret: 'ee70b07f7b1587057e781e906739f3c515982cd4',
+  baseURL: 'http://seafewd5.evblurbs.io',
   loginURI: '/login',
   callbackURI: '/callback',
   scope: 'user' // optional, default scope is set to user 

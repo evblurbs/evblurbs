@@ -52,12 +52,19 @@ githubOAuth.on('token', function(token, serverResponse) {
   var options = {
     hostname: 'api.github.com',
     path: '/user?access_token=046be40da20b63d5f784be834c55ed670f0b0208',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13'
+    }
   };
 
   var req = https.request(options, function(res) {
+    var body = '';
+    res.on('data', function(d) {
+      body += d;
+    });
     res.on('end', function() {
-      serverResponse.end(JSON.parse(body));
+      serverResponse.end(body);
     });
   });
   req.end();

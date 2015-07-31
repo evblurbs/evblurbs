@@ -3,7 +3,7 @@ var http = require('http');
 var vhost = require('vhost');
 var serverStatic = require('serve-static');
 var compression = require('compression');
-var githubUtils = require('sea-fewd/app/utils/githubUtils');
+var githubUtils = require('./sea-fewd/app/utils/githubUtils');
 
 // app for evblurbs.io
 var mainapp = connect();

@@ -49,28 +49,28 @@ githubOAuth.on('error', function(err) {
 
 githubOAuth.on('token', function(token, serverResponse) {
 
-  var options = {
-    hostname: 'api.github.com',
-    path: '/user?access_token=' + token.access_token,
-    method: 'GET',
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13'
-    }
-  };
+  //var options = {
+    //hostname: 'api.github.com',
+    //path: '/user?access_token=' + token.access_token,
+    //method: 'GET',
+    //headers: {
+      //'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13'
+    //}
+  //};
 
-  var req = https.request(options, function(res) {
-    var body = '';
-    res.on('data', function(d) {
-      body += d;
-    });
-    res.on('end', function() {
-      serverResponse.end(body);
-    });
-  });
-  req.end();
-  req.on('error', function(e) {
-    console.error(e);
-  });
-  //githubUtils.login(token.access_token, serverResponse);
+  //var req = https.request(options, function(res) {
+    //var body = '';
+    //res.on('data', function(d) {
+      //body += d;
+    //});
+    //res.on('end', function() {
+      //serverResponse.end(body);
+    //});
+  //});
+  //req.end();
+  //req.on('error', function(e) {
+    //console.error(e);
+  //});
+  githubUtils.login(token.access_token, serverResponse);
 });
 

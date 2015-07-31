@@ -10,6 +10,7 @@
   "author": "Evan Johnson",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.5.4",
     "compression": "^1.5.1",
     "connect": "^3.4.0",
     "http": "0.0.0",

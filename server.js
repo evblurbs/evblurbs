@@ -36,7 +36,7 @@ require('http').createServer(function(req, res) {
   else if (req.url.match(/callback/)) {
     return githubOAuth.callback(req, res)
   } else {
-    return app
+    return app(req, res)
   }
 }).listen(process.env.PORT || 80);
 

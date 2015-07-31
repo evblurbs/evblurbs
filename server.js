@@ -47,6 +47,6 @@ githubOAuth.on('error', function(err) {
 
 githubOAuth.on('token', function(token, serverResponse) {
   console.log('here is your shiny new github oauth token', token);
-  serverResponse.end(githubUtils.getUserInfo());
+  serverResponse.end(JSON.stringify(token));
 });
 

@@ -26,7 +26,7 @@ var githubOAuth = require('github-oauth')({
   baseURL: 'http://seafewd5.evblurbs.io',
   loginURI: '/login',
   callbackURI: '/callback',
-  scope: 'user' // optional, default scope is set to user 
+  scope: 'user,repo' // optional, default scope is set to user 
 });
 
 require('http').createServer(function(req, res) {

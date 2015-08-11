@@ -12,7 +12,8 @@ var path = require('path'),
     exec = require('child_process').exec,
     githubUtils = require('./sea-fewd/app/utils/githubUtils'),
     compression = require('compression'),
-    serverStatic = require('serve-static');
+    serverStatic = require('serve-static'),
+    appConstants = require('./sea-fewd/app/constants/appConstants');
 
 // github method to get auth token
 var githubOAuth = require('github-oauth')({
@@ -21,7 +22,7 @@ var githubOAuth = require('github-oauth')({
   baseURL: 'http://seafewd5.evblurbs.io',
   loginURI: '/login',
   callbackURI: '/callback',
-  scope: 'user,repo' // optional, default scope is set to user 
+  scope: appConstants.GITHUB_API_SCOPE
 });
 
 githubOAuth.on('error', function(err) {

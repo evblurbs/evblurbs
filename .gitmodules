@@ -1,3 +1,6 @@
 [submodule "sea-fewd"]
 	path = sea-fewd
 	url = https://github.com/evblurbs/sea-fewd.git
+[submodule "sea-fewd7"]
+	path = sea-fewd7
+	url = https://github.com/evblurbs/ga-fewd.git

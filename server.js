@@ -108,18 +108,22 @@ var render = function(res, markdown) {
 // server paths
 var evblurbs = connect();
 var seafewd = connect();
+var seafewd7 = connect();
 
 // get reveal files from reveal-md module
 ['css', 'js', 'images', 'plugin', 'lib'].forEach(function(dir) {
   seafewd.use('/' + dir, serverStatic(opts.revealBasePath + dir));
+  seafewd7.use('/' + dir, serverStatic(opts.revealBasePath + dir));
 });
 
 evblurbs.use(serverStatic(__dirname + "/dist"));
 seafewd.use(serverStatic(__dirname + "/sea-fewd/dist"));
+seafewd7.use(serverStatic(__dirname + "/sea-fewd7/dist"));
 
 var app = connect();
 app.use(compression());
 app.use(vhost('seafewd5.evblurbs.io', seafewd));
+app.use(vhost('seafewd7.evblurbs.io', seafewd));
 app.use(vhost('evblurbs.io', evblurbs));
 app.use(vhost('www.evblurbs.io', evblurbs));
 

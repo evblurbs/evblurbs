@@ -21,8 +21,8 @@ var githubOAuth = require('github-oauth')({
   githubClient: '23d58dfc41b20cb6f224',
   githubSecret: 'ee70b07f7b1587057e781e906739f3c515982cd4',
   baseURL: 'http://seafewd5.evblurbs.io',
-  loginURI: '/login',
-  callbackURI: '/callback',
+  loginURI: '/fewd5login',
+  callbackURI: '/fewd5callback',
   scope: appConstants.GITHUB_API_SCOPE
 });
 

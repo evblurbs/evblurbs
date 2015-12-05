@@ -144,7 +144,7 @@ app.use(vhost('evblurbs.io', evblurbs));
 app.use(vhost('www.evblurbs.io', evblurbs));
 
 http.createServer(function(req, res) {
-  if (req.url.match(/login/)) {
+  if (req.url.match(/fewd5login/)) {
     process.stdout.write('Login called');
     return githubOAuth.login(req, res)
   }
@@ -152,7 +152,7 @@ http.createServer(function(req, res) {
     process.stdout.write('Login 2 called');
     return githubOAuth2.login(req, res)
   }
-  else if (req.url.match(/callback/)) {
+  else if (req.url.match(/fewd5callback/)) {
     return githubOAuth.callback(req, res)
     process.stdout.write('Callback called');
   }

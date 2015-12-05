@@ -34,6 +34,24 @@ githubOAuth.on('token', function(token, serverResponse) {
   githubUtils.login(token.access_token, serverResponse);
 });
 
+var githubOAuth2 = require('github-oauth')({
+  githubClient: '553f77e7ddce4af9b22b',
+  githubSecret: '09b54f96ceb780312001929ab46ef8df659e86cb',
+  baseURL: 'http://seafewd7.evblurbs.io',
+  loginURI: '/login2',
+  callbackURI: '/callback2',
+  scope: appConstants.GITHUB_API_SCOPE
+});
+
+githubOAuth2.on('error', function(err) {
+  console.error('there was a login error', err);
+});
+
+githubOAuth2.on('token', function(token, serverResponse) {
+  process.stdout.write('TOKEN RECEIVED');
+  githubUtils.login(token.access_token, serverResponse);
+});
+
 // reveal-md code to render reveal template
 // from md files
 var serverBasePath = path.resolve(__dirname);
@@ -128,8 +146,14 @@ http.createServer(function(req, res) {
   if (req.url.match(/login/)) {
     return githubOAuth.login(req, res)
   }
+  else if (req.url.match(/login2/)) {
+    return githubOAuth2.login(req, res)
+  }
   else if (req.url.match(/callback/)) {
     return githubOAuth.callback(req, res)
+  }
+  else if (req.url.match(/callback2/)) {
+    return githubOAuth2.callback(req, res)
   }
   else if (req.url.match(/(\w+\.md)$/)) {
     return renderMarkdownAsSlides(req, res)

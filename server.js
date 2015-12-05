@@ -11,6 +11,7 @@ var path = require('path'),
     md = require(__dirname + '/node_modules/reveal-md/node_modules/reveal.js/plugin/markdown/markdown'),
     exec = require('child_process').exec,
     githubUtils = require('./sea-fewd/app/utils/githubUtils'),
+    githubUtils2 = require('./sea-fewd7/app/utils/githubUtils'),
     compression = require('compression'),
     serverStatic = require('serve-static'),
     appConstants = require('./sea-fewd/app/constants/appConstants');
@@ -49,7 +50,7 @@ githubOAuth2.on('error', function(err) {
 
 githubOAuth2.on('token', function(token, serverResponse) {
   process.stdout.write('TOKEN RECEIVED');
-  githubUtils.login(token.access_token, serverResponse);
+  githubUtils2.login(token.access_token, serverResponse);
 });
 
 // reveal-md code to render reveal template
@@ -144,16 +145,20 @@ app.use(vhost('www.evblurbs.io', evblurbs));
 
 http.createServer(function(req, res) {
   if (req.url.match(/login/)) {
+    process.stdout.write('Login called');
     return githubOAuth.login(req, res)
   }
   else if (req.url.match(/login2/)) {
+    process.stdout.write('Login 2 called');
     return githubOAuth2.login(req, res)
   }
   else if (req.url.match(/callback/)) {
     return githubOAuth.callback(req, res)
+    process.stdout.write('Callback called');
   }
   else if (req.url.match(/callback2/)) {
     return githubOAuth2.callback(req, res)
+    process.stdout.write('Callback 2 called');
   }
   else if (req.url.match(/(\w+\.md)$/)) {
     return renderMarkdownAsSlides(req, res)

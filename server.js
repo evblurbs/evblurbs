@@ -39,8 +39,8 @@ var githubOAuth2 = require('github-oauth')({
   githubClient: '553f77e7ddce4af9b22b',
   githubSecret: '09b54f96ceb780312001929ab46ef8df659e86cb',
   baseURL: 'http://seafewd7.evblurbs.io',
-  loginURI: '/login2',
-  callbackURI: '/callback2',
+  loginURI: '/fewd7login',
+  callbackURI: '/fewd7callback',
   scope: appConstants.GITHUB_API_SCOPE
 });
 
@@ -148,7 +148,7 @@ http.createServer(function(req, res) {
     process.stdout.write('Login called');
     return githubOAuth.login(req, res)
   }
-  else if (req.url.match(/login2/)) {
+  else if (req.url.match(/fewd7login/)) {
     process.stdout.write('Login 2 called');
     return githubOAuth2.login(req, res)
   }
@@ -156,7 +156,7 @@ http.createServer(function(req, res) {
     return githubOAuth.callback(req, res)
     process.stdout.write('Callback called');
   }
-  else if (req.url.match(/callback2/)) {
+  else if (req.url.match(/fewd7callback/)) {
     return githubOAuth2.callback(req, res)
     process.stdout.write('Callback 2 called');
   }

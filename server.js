@@ -34,9 +34,6 @@ githubOAuth.on('token', function(token, serverResponse) {
   githubUtils.login(token.access_token, serverResponse);
 });
 
-
-
-
 // reveal-md code to render reveal template
 // from md files
 var serverBasePath = path.resolve(__dirname);
@@ -123,7 +120,7 @@ seafewd7.use(serverStatic(__dirname + "/sea-fewd7/dist"));
 var app = connect();
 app.use(compression());
 app.use(vhost('seafewd5.evblurbs.io', seafewd));
-app.use(vhost('seafewd7.evblurbs.io', seafewd));
+app.use(vhost('seafewd7.evblurbs.io', seafewd7));
 app.use(vhost('evblurbs.io', evblurbs));
 app.use(vhost('www.evblurbs.io', evblurbs));
 

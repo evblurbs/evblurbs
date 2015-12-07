@@ -84,7 +84,7 @@ var renderMarkdownAsSlides = function(req, res) {
       req.url = req.url.replace('?print-pdf','');
     }
 
-    markdownPath = path.resolve(__dirname + '/sea-fewd/dist/slides/' + req.url);
+    markdownPath = path.resolve(__dirname + '/sea-fewd7/dist/slides/' + req.url);
     process.stdout.write('markdown path: ');
     process.stdout.write(markdownPath);
     fsPath = markdownPath.replace(/(\?.*)$/, '');

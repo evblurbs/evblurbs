@@ -62,7 +62,7 @@ var opts = {
     host: 'localhost',
     port: 80,
     revealBasePath: __dirname + '/node_modules/reveal-md/node_modules/reveal.js/',
-    template: fs.readFileSync(serverBasePath + '/sea-fewd/dist/template/reveal.html').toString(),
+    template: fs.readFileSync(serverBasePath + '/sea-fewd7/dist/template/reveal.html').toString(),
     theme: 'css/theme/beige.css',
     separator: '^(\r\n?|\n)---(\r\n?|\n)$',
     verticalSeparator: '^(\r\n?|\n)----(\r\n?|\n)$',
